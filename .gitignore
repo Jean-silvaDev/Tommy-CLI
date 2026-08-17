@@ -1,0 +1,40 @@
+# Tommy CLI - Git Ignore Configuration
+
+# Local environment files (Secrets / Local machine config)
+.env
+.env.local
+.env.*.local
+
+# Local generated prompts & interview sessions
+PromptBuilder/
+
+# Compilations & Binaries
+*.exe
+*.exe.stackdump
+tommy
+tommy.exe
+meucli
+meucli.exe
+
+# IDE / Editor configuration
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Build / Test / Coverage output
+*.out
+*.test
+coverage.txt
+*.prof
+
+# Operating System files
+Thumbs.db
+Desktop.ini
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
