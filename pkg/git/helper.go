@@ -181,6 +181,16 @@ func CreateTag(tagName string, message string) error {
 	return nil
 }
 
+// GetCurrentBranch retorna o nome da branch ativa
+func GetCurrentBranch() (string, error) {
+	cmd := exec.Command("git", "rev-parse", "--abbrev-ref", "HEAD")
+	out, err := cmd.CombinedOutput()
+	if err != nil {
+		return "", fmt.Errorf("falha ao obter branch atual: %s", string(out))
+	}
+	return strings.TrimSpace(string(out)), nil
+}
+
 // Push Remote envia commits e tags para o repositório remoto
 func Push(includeTags bool) error {
 	args := []string{"push"}
@@ -191,7 +201,23 @@ func Push(includeTags bool) error {
 	cmd := exec.Command("git", args...)
 	out, err := cmd.CombinedOutput()
 	if err != nil {
-		return fmt.Errorf("falha ao executar git push: %s", string(out))
+		errMsg := string(out)
+		if strings.Contains(errMsg, "has no upstream branch") || strings.Contains(errMsg, "set-upstream") {
+			currBranch, branchErr := GetCurrentBranch()
+			if branchErr == nil && currBranch != "" {
+				setUpstreamArgs := []string{"push", "--set-upstream", "origin", currBranch}
+				if includeTags {
+					setUpstreamArgs = append(setUpstreamArgs, "--follow-tags")
+				}
+				cmdUpstream := exec.Command("git", setUpstreamArgs...)
+				outUpstream, errUpstream := cmdUpstream.CombinedOutput()
+				if errUpstream == nil {
+					return nil
+				}
+				return fmt.Errorf("falha ao executar git push --set-upstream origin %s: %s", currBranch, string(outUpstream))
+			}
+		}
+		return fmt.Errorf("falha ao executar git push: %s", errMsg)
 	}
 	return nil
 }
