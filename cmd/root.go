@@ -36,16 +36,17 @@ func runMainMenu() {
 		ui.PrintBanner("Menu Principal")
 
 		options := []string{
-			"1. 🧹 Limpeza de Recursos (Temp, NuGet, Docker, Lixeira)",
-			"2. 🐳 Gerenciador de Containers Docker",
-			"3. 🔀 Assistente de Fluxo de Trabalho Git",
-			"4. 🌐 Ferramentas & Diagnóstico de Rede",
-			"5. 📝 Prompt Builder (Elicitação de Requisitos & Gerador de Prompts)",
-			"6. 🚪 Sair da Aplicação",
+			"1. 🧹  Limpeza de Recursos (Temp, NuGet, Docker, Lixeira)",
+			"2. 🐳  Gerenciador de Containers Docker",
+			"3. 🔀  Assistente de Fluxo de Trabalho Git",
+			"4. 🌐  Ferramentas & Diagnóstico de Rede",
+			"5. 📝  Prompt Builder (Elicitação de Requisitos & Gerador de Prompts)",
+			"6. 🖥️  Gerenciador do Sistema (System Manager)",
+			"7. 🚪  Sair da Aplicação",
 		}
 
 		idx, _, err := ui.SelectOption("Selecione um módulo para utilizar", options)
-		if err != nil || idx == 5 {
+		if err != nil || idx == 6 {
 			ui.PrintExitMessage()
 			break
 		}
@@ -61,6 +62,8 @@ func runMainMenu() {
 			runNetworkDashboard()
 		case 4:
 			runPromptBuilderInteractive()
+		case 5:
+			runSystemDashboard()
 		}
 	}
 }

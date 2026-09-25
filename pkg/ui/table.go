@@ -70,8 +70,14 @@ func RenderTable(headers []string, rows [][]string) {
 			} else {
 				maxCap = 35
 			}
-		case hUpper == "PORTA" || hUpper == "TIPO" || hUpper == "PROTO" || hUpper == "PID":
-			maxCap = 12
+		case hUpper == "PORTA" || hUpper == "TIPO" || hUpper == "PROTO" || hUpper == "PID" || hUpper == "DISCO" || hUpper == "USO":
+			maxCap = 14
+		case hUpper == "MEMÓRIA" || hUpper == "TOTAL" || hUpper == "USADO" || hUpper == "LIVRE":
+			maxCap = 16
+		case hUpper == "PROCESSO" || hUpper == "FABRICANTE" || hUpper == "ARQUIVO":
+			maxCap = 28
+		case hUpper == "CAMINHO":
+			maxCap = 45
 		}
 
 		if colWidths[i] > maxCap {

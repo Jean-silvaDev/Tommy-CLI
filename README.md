@@ -50,6 +50,16 @@
 - **Lixeira do Sistema (`tommy clean trash`):** Esvaziamento permanente da Lixeira do Windows (Recycle Bin) sem mensagens de travamento.
 - **Limpeza Completa (`tommy clean all`):** Execução sequencial de todas as rotinas de limpeza do computador com pausa e relatório de encerramento.
 
+### 🖥️ 6. System Manager & Monitoramento (`tommy system` / `sys`)
+- **Dashboard Interativo:** Cartão visual estilizado com acompanhamento em tempo real da Memória RAM (total/usada/% com barra colorida), uso estimado da CPU e capacidade de armazenamento em todos os volumes de disco (`C:`, `D:`, etc.).
+- **Gerenciador de Memória RAM (`tommy system memory`):** Métricas de RAM total, usada e disponível e listagem dos maiores processos consumidores.
+- **Gerenciador de Processos Ativos (`tommy system processes`):** Tabela de processos com PID, uso de memória, threads e status. Permite busca por nome/PID e encerramento seguro (`KillProcess`) com proteção automática contra fechamento acidental de processos críticos do sistema operacional (`csrss.exe`, `lsass.exe`, `services.exe`, `explorer.exe`, etc.) e diálogo de confirmação.
+- **Gerenciador de Discos & Volumes (`tommy system disk`):** Classificação dos discos (SSD, HDD, NVMe, Removível, Rede), sistema de arquivos, total/usado/livre, uso percentual e status de saúde.
+- **Aplicativos Instalados & Desinstalação (`tommy system apps`):** Descoberta nativa via Registro do Windows (`HKLM`/`HKCU`) e `winget`. Suporta busca por fabricante/nome, ordenação por tamanho em disco, filtro por unidade e desinstalação segura com caixa de detalhes de confirmação.
+- **Analisador de Espaço (`tommy system analyze <caminho>`):** Mapeamento profundo do tamanho ocupado por diretórios e arquivos (protegido contra loops de symlinks/junctions).
+- **Maiores Arquivos (`tommy system largest <caminho>`):** Localiza os maiores arquivos individuais no disco com suporte à flag `--dry-run`.
+- **Monitoramento em Tempo Real (`tommy system monitor`):** Atualização contínua de recursos sem sobrecarregar a CPU.
+
 ---
 
 ## ⚙️ Variáveis de Ambiente (`.env`)

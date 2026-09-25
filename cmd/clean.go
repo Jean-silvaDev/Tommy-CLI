@@ -209,13 +209,13 @@ func runInteractiveCleanMenu() {
 		ui.PrintBanner("Módulo de Limpeza")
 
 		options := []string{
-			"1. 🧹 Limpar Arquivos Temporários (%TEMP% + C:\\Windows\\Temp)",
-			"2. 📦 Limpar Cache de Pacotes .NET NuGet",
-			"3. 🐳 Limpar Recursos Não Utilizados do Docker",
+			"1. 🧹  Limpar Arquivos Temporários (%TEMP% + C:\\Windows\\Temp)",
+			"2. 📦  Limpar Cache de Pacotes .NET NuGet",
+			"3. 🐳  Limpar Recursos Não Utilizados do Docker",
 			"4. 🗑️  Esvaziar Lixeira do Sistema (Recycle Bin)",
-			"5. ⚡ Executar Limpeza Completa (Tudo)",
+			"5. ⚡  Executar Limpeza Completa (Tudo)",
 			"6. ⬅️  Voltar ao Menu Principal",
-			"7. 🚪 Sair da Aplicação",
+			"7. 🚪  Sair da Aplicação",
 		}
 
 		idx, _, err := ui.SelectOption("Selecione uma opção de limpeza", options)
